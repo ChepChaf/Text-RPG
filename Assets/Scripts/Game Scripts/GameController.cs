@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
+using TMPro;
+
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameController : MonoBehaviour
+public class GameController : Singleton<GameController>
 {
     Conversation m_currentConversation = null;
-    DialogLog m_dialogLog = null;
 
     [SerializeField]
     InputField m_textInput = null;
@@ -20,26 +22,12 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        m_dialogLog = new DialogLog();
+        m_gameMasterEntity.Init();
+        m_playerEntity.Init();
 
         m_currentConversation = new Conversation();
         m_currentConversation.AddParticipant(m_gameMasterEntity);
         m_currentConversation.AddParticipant(m_playerEntity);
-    }
-
-    private void OnEnable()
-    {
-        Conversation.newMessageEvent += NewDialog;
-    }
-
-    private void OnDisable()
-    {
-        Conversation.newMessageEvent -= NewDialog;
-    }
-
-    void NewDialog(Dialog message)
-    {
-        m_dialogLog.AddDialog(message);
     }
 
     // Update is called once per frame
@@ -52,8 +40,7 @@ public class GameController : MonoBehaviour
                 Dialog playerDialog = ScriptableObject.CreateInstance<Dialog>();
                 playerDialog.content = m_textInput.text;
 
-                NewDialog(playerDialog);
-                m_currentConversation.TransmitMessage(m_playerEntity, m_textInput.text);
+                m_currentConversation.TransmitMessage(m_playerEntity, playerDialog);
                 m_textInput.text = "";
             }
         }

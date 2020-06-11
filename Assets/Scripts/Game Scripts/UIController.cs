@@ -3,28 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class UIController : Singleton<UIController>
 {
     [SerializeField]
     Text m_text = null;
 
     private void OnEnable()
     {
-        DialogLog.newDialogEvent += UpdateText;
+        Conversation.newMessageEvent += UpdateText;
     }
 
     private void OnDisable()
     {
-        DialogLog.newDialogEvent -= UpdateText;
+        Conversation.newMessageEvent -= UpdateText;
     }
 
-    void UpdateText(DialogLog dialogLog)
+    void UpdateText(Dialog dialog)
     {
-        m_text.text = "";
-
-        foreach(Dialog dialog in dialogLog.Dialogs)
-        {
-            m_text.text += dialog.content + "\n";
-        }
+        Debug.Log("UI Dialog: " + dialog);
+        m_text.text += dialog.content + "\n";
     }
 }

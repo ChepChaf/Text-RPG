@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_textInput: {fileID: 1808563005}
+  m_playerEntity: {fileID: 11400000, guid: 61915cb2cfe53c6499b55977d1b3da9c, type: 2}
+  m_gameMasterEntity: {fileID: 11400000, guid: 16760d62252552b4284310ab217e7a46, type: 2}
 --- !u!4 &189641616
 Transform:
   m_ObjectHideFlags: 0
@@ -300,7 +302,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '|> Merchant: Hello Traveler'
+  m_Text: 
 --- !u!222 &566669527
 CanvasRenderer:
   m_ObjectHideFlags: 0

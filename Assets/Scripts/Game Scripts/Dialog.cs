@@ -7,4 +7,6 @@ public class Dialog : ScriptableObject
 {
     [Header("Content")]
     public string content;
+
+    public Dialog[] requiredDialogs;
 }

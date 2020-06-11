@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe36630c4d27d344287dcdc6b1b94138, type: 3}
   m_Name: gameMaster
   m_EditorClassIdentifier: 
-  dialogs: []
+  dialogs:
+  - {fileID: 11400000, guid: 561e94372eb7006478a34c72a715a681, type: 2}

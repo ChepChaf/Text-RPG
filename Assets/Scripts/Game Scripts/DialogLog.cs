@@ -7,20 +7,31 @@ public class DialogLog
     public delegate void NewDialog(DialogLog dialog);
     public static event NewDialog newDialogEvent;
 
-    Queue<Dialog> dialogs = new Queue<Dialog>();
+    Queue<Dialog> m_dialogs = new Queue<Dialog>();
 
     public Queue<Dialog> Dialogs
     {
         get
         {
-            return dialogs;
+            return m_dialogs;
         }
     }
 
     public void AddDialog(Dialog dialog)
     {
-        dialogs.Enqueue(dialog);
+        m_dialogs.Enqueue(dialog);
         if (newDialogEvent != null)
             newDialogEvent(this);
+    }
+
+    public bool ContainsAll(Dialog[] dialogs)
+    {
+        foreach(Dialog dialog in dialogs)
+        {
+            if (!m_dialogs.Contains(dialog))
+                return false;
+        }
+
+        return true;
     }
 }
