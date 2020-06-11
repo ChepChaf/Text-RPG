@@ -1,6 +1,7 @@
 ﻿
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 using UnityEngine;
 
@@ -30,9 +31,12 @@ public class Conversation
 
     public bool ContainsAll(Dialog[] dialogs)
     {
+        List<string> dialogContents = m_dialogs.Select(x => x.content).ToList();
+
         foreach (Dialog dialog in dialogs)
         {
-            if (!m_dialogs.Contains(dialog))
+            // TODO: Expand this to the Entity who made the Dialog
+            if (!dialogContents.Contains(dialog.content))
                 return false;
         }
 
