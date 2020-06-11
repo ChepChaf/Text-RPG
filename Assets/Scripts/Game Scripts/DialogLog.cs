@@ -7,9 +7,9 @@ public class DialogLog
     public delegate void NewDialog(DialogLog dialog);
     public static event NewDialog newDialogEvent;
 
-    Queue<string> dialogs = new Queue<string>();
+    Queue<Dialog> dialogs = new Queue<Dialog>();
 
-    public Queue<string> Dialogs
+    public Queue<Dialog> Dialogs
     {
         get
         {
@@ -17,7 +17,7 @@ public class DialogLog
         }
     }
 
-    public void AddDialog(string dialog)
+    public void AddDialog(Dialog dialog)
     {
         dialogs.Enqueue(dialog);
         if (newDialogEvent != null)

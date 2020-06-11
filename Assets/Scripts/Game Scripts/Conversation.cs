@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Conversation
 {
-    public delegate void NewMessage(string message);
+    public delegate void NewMessage(Dialog message);
     public static event NewMessage newMessageEvent;
 
     List<Entity> m_participants = new List<Entity>();
@@ -22,7 +22,7 @@ public class Conversation
         {
             if (entity == emiterEntity)
                 continue;
-            string nextMessage = entity.nextAction(message);
+            Dialog nextMessage = entity.nextDialog();
 
             if (newMessageEvent != null && nextMessage != null)
                 newMessageEvent(nextMessage);

@@ -22,9 +22,9 @@ public class UIController : MonoBehaviour
     {
         m_text.text = "";
 
-        foreach(string dialog in dialogLog.Dialogs)
+        foreach(Dialog dialog in dialogLog.Dialogs)
         {
-            m_text.text += dialog + "\n";
+            m_text.text += dialog.content + "\n";
         }
     }
 }

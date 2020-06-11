@@ -12,16 +12,18 @@ public class GameController : MonoBehaviour
     InputField m_textInput = null;
     // Start is called before the first frame update
 
-    PlayerEntity m_playerEntity = null;
+    [SerializeField]
+    Entity m_playerEntity = null;
+
+    [SerializeField]
+    Entity m_gameMasterEntity = null;
 
     void Start()
     {
-        m_playerEntity = new PlayerEntity();
-
         m_dialogLog = new DialogLog();
 
         m_currentConversation = new Conversation();
-        m_currentConversation.AddParticipant(new GameMasterEntity());
+        m_currentConversation.AddParticipant(m_gameMasterEntity);
         m_currentConversation.AddParticipant(m_playerEntity);
     }
 
@@ -35,7 +37,7 @@ public class GameController : MonoBehaviour
         Conversation.newMessageEvent -= NewDialog;
     }
 
-    void NewDialog(string message)
+    void NewDialog(Dialog message)
     {
         m_dialogLog.AddDialog(message);
     }
@@ -47,7 +49,10 @@ public class GameController : MonoBehaviour
         {
             if (m_textInput.text.Length > 0)
             {
-                NewDialog(m_textInput.text);
+                Dialog playerDialog = ScriptableObject.CreateInstance<Dialog>();
+                playerDialog.content = m_textInput.text;
+
+                NewDialog(playerDialog);
                 m_currentConversation.TransmitMessage(m_playerEntity, m_textInput.text);
                 m_textInput.text = "";
             }
