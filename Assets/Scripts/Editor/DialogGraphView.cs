@@ -36,6 +36,7 @@ public class DialogGraphView : GraphView
         dialogNode.outputContainer.Add(previousPort);
 
         dialogNode.RefreshExpandedState();
+        dialogNode.RefreshPorts();
 
         dialogNode.SetPosition(new Rect(position, new Vector2(200, 150)));
 
@@ -47,6 +48,22 @@ public class DialogGraphView : GraphView
     {
         return node.InstantiatePort(Orientation.Horizontal, nodeDirection, capacity, typeof(float));
     }
+
+    public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
+    {
+        var compatiblePorts = new List<Port>();
+        var startPortView = startPort;
+
+        ports.ForEach((port) =>
+        {
+            var portView = port;
+            if (startPortView != portView && startPortView.node != portView.node)
+                compatiblePorts.Add(port);
+        });
+
+        return compatiblePorts;
+    }
+
     public DialogNode GetEntrypointNode()
     {
         var entrypointNode = new DialogNode()
