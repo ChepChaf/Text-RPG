@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f1503620fb955d4fb4362cde83a696e, type: 3}
-  m_Name: Greeting
+  m_Name: gameMaster_Greeting
   m_EditorClassIdentifier: 
   content: Welcome stranger, I'm the Game Master, and this is the best game ever!
-  requiredDialogs: []
+  requiredDialogs:
+  - {fileID: 11400000, guid: e3209fcb80fbc5d49835dd1d78c04c7a, type: 2}

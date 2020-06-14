@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1503620fb955d4fb4362cde83a696e, type: 3}
   m_Name: gameMaster_Mission
   m_EditorClassIdentifier: 
-  content: 
-  requiredDialogs: []
+  content: I Have a mission for you
+  requiredDialogs:
+  - {fileID: 11400000, guid: 561e94372eb7006478a34c72a715a681, type: 2}
+  - {fileID: 11400000, guid: a1ec64a98875ff34db1c29ca089d767f, type: 2}

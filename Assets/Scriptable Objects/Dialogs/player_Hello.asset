@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1503620fb955d4fb4362cde83a696e, type: 3}
   m_Name: player_Hello
   m_EditorClassIdentifier: 
-  content: 
+  content: Hello
   requiredDialogs: []

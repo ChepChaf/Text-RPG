@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f1503620fb955d4fb4362cde83a696e, type: 3}
-  m_Name: player_Help
+  m_Name: player_Quest
   m_EditorClassIdentifier: 
-  content: 
+  content: Quest
   requiredDialogs: []
